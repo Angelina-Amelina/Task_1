@@ -7,3 +7,9 @@ INGREDIENTS_DATA = [
     {"ingredient_name": "Мини-салат Экзо-Плантаго", "ingredient_type": "FILLING", "ingredient_price": 440.0},
     {"ingredient_name": "Филе Люминесцентного тетраодонтимформа", "ingredient_type": "FILLING", "ingredient_price": 988.0}
 ]
+
+BUN_NAME = "bun"
+BUN_PRICE = 100.0
+INGREDIENT_TYPE = "sauce"
+INGREDIENT_NAME = "spicy-X"
+INGREDIENT_PRICE = 280.0

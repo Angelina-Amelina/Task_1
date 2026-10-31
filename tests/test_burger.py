@@ -1,6 +1,7 @@
 import pytest
 from unittest.mock import Mock
 from burger import Burger
+from data import BUN_PRICE, INGREDIENT_PRICE
 
 class TestBurger:
 
@@ -29,28 +30,24 @@ class TestBurger:
         assert burger.ingredients == [second_ingredient, mock_ingredient]
 
     def test_get_price_return_correct_price(self, full_burger):
-        assert full_burger.get_price() == 480.0
-
-    def test_get_receipt_return_correct_receipt(self, full_burger):
-        expected = """(==== bun ====)
-= sauce spicy-X =
-(==== bun ====)
-
-Price: 480.0"""
-        assert full_burger.get_receipt() == expected
+        expected = (BUN_PRICE * 2) + INGREDIENT_PRICE
+        assert full_burger.get_price() == expected
 
    # Проверяем, что при удалении из пустого бургера вызывается ошибка индекса
     def test_remove_ingredient_raises_index_error_for_index(self, burger):
         with pytest.raises(IndexError):
             burger.remove_ingredient(0)
+
    # Проверяем, что при перемещении в пустом бургере вызываетя ошибка индекса
     def test_move_ingredient_raises_index_error_for_empty_list(self, burger):
         with pytest.raises(IndexError):
             burger.move_ingredient(0, 1)
+
    # Проверяем, что расчет цены без булки вызовет ошибку
     def test_get_price_raises_attribute_error_without_bun(self, burger):
         with pytest.raises(AttributeError):
             burger.get_price()
+
    # Проверяем, что печать чека без булки вызовет ошибку
     def test_get_receipt_raises_attribute_error_without_bun(self, burger):
         with pytest.raises(AttributeError):

@@ -2,6 +2,7 @@ import pytest
 from unittest.mock import Mock
 from burger import Burger
 from database import Database
+from data import BUN_NAME, BUN_PRICE, INGREDIENT_PRICE, INGREDIENT_TYPE, INGREDIENT_NAME
 
 @pytest.fixture
 def burger():
@@ -9,15 +10,15 @@ def burger():
 @pytest.fixture
 def mock_bun():
     bun = Mock()
-    bun.get_name.return_value = "bun"
-    bun.get_price.return_value = 200.0
+    bun.get_name.return_value = BUN_NAME
+    bun.get_price.return_value = BUN_PRICE
     return bun
 @pytest.fixture
 def mock_ingredient():
     ingredient = Mock()
-    ingredient.get_type.return_value = "sauce"
-    ingredient.get_name.return_value = "spicy-X"
-    ingredient.get_price.return_value = 80.0
+    ingredient.get_type.return_value = INGREDIENT_TYPE
+    ingredient.get_name.return_value = INGREDIENT_NAME
+    ingredient.get_price.return_value = INGREDIENT_PRICE
     return ingredient
 @pytest.fixture
 def full_burger(burger, mock_bun, mock_ingredient):
